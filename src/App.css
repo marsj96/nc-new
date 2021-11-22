@@ -57,7 +57,20 @@
 }
 
 .articlesPage {
-  padding-top: 30px;
+  padding-top: 10px;
   position: fixed;
   left: 10px;
+}
+
+.articleTitle {
+  text-align: left;
+}
+
+.articleBody {
+  text-align: left;
+}
+
+.articleBottom {
+  text-align: left;
+  word-spacing: 20px;
 }
