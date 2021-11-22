@@ -1,17 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Home = () => {
 
     const [sortBy, setSortBy] = useState()
+    const [articles, setArticles] = useState()
 
     const handleChange = (e) => {
         let {value} = e.target;
         setSortBy(value)
-    }   
+    }
+
+    useEffect(() => {
+        getArticles().then((returnedArticles) => {
+            setArticles(returnedArticles)
+        })
+    }, [])
 
     return (
         <div>
-            Filter 
+        <div className="filterBy">
+            Filter:  
             <select onChange={handleChange}>
                 <option>
                     Date
@@ -32,6 +40,11 @@ const Home = () => {
                     Author
                 </option>
             </select>
+        </div>
+        <br></br>
+        <div className="articlesPage">
+            Hello
+        </div>
         </div>
     )
 }
