@@ -52,14 +52,17 @@
 }
 
 .filterBy {
-  position: fixed;
-  left: 10px;
+  text-align: left;
 }
 
 .articlesPage {
-  padding-top: 10px;
-  position: fixed;
+  border: solid red;
+  padding-top: 5px;
   left: 10px;
+}
+
+.articlesCards {
+  border: solid blue;
 }
 
 .articleTitle {

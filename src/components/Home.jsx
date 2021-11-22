@@ -54,7 +54,7 @@ const Home = () => {
 
             {articles.map((article)=>{
                 return (
-                    <div>
+                    <div className="articlesCards">
                     <h4 className="articleTitle" key={article.title}>  {article.title} {`(${article.topic})`} </h4>
                     <p className="articleBody"> {article.body.slice(0, 75)}... </p>
                     <div> <p className="articleBottom"> {article.author} Votes:{article.votes} <button>Comments</button> </p>  </div>
