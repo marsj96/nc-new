@@ -1,14 +1,14 @@
 const Nav = () => {
     
     return (
-        <div>
+        <navbar className="bar">
             <nav className="navBar"> 
                 <button className="loginButton"> 
                     Login 
                 </button> 
             Home Topics
             </nav>
-        </div>
+        </navbar>
     )
 }
 

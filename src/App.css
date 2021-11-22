@@ -38,10 +38,10 @@
 }
 
 .navBar {
-  text-align: right;
-  padding-top: 5px;
-  padding-right: 10px;
-  word-spacing: 20px;
+  position: fixed;
+  top: 5px;
+  right: 1em;
+  word-spacing: 10px;
 }
 
 .loginButton {
@@ -53,11 +53,13 @@
 
 .filterBy {
   text-align: left;
+  padding-left: 10px;
 }
 
 .articlesPage {
   border: solid red;
   padding-top: 5px;
+  padding-left: 10px;
   left: 10px;
 }
 
