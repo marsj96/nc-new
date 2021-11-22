@@ -50,3 +50,14 @@
   left: 10px;
   text-align: left;
 }
+
+.filterBy {
+  position: fixed;
+  left: 10px;
+}
+
+.articlesPage {
+  padding-top: 30px;
+  position: fixed;
+  left: 10px;
+}
