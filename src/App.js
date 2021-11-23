@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import Home from './components/Home';
 import Header from './components/Header';
 import { UserProvider } from './contexts/User';
+import Article from './components/Article';
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/:article_id' element={<Home/>}/>
+          <Route path='/:article_id' element={<Article/>}/>
         </Routes>
       </div>
       </BrowserRouter>
