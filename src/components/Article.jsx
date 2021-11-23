@@ -24,7 +24,7 @@ const Article = () => {
             <div> <p className="articleBottom"> {singleArticle.author} Votes:{singleArticle.votes} {singleArticle.created_at} </p>  </div>
         </div>     
         <div>
-            {loggedIn ? <button> Post a comment </button> : ""}            
+            {loggedIn ? <button> Post a comment </button> : <button> Please log in to post a comment </button>}            
         </div>
         <br></br>
         <div>
