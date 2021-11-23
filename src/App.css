@@ -145,4 +145,16 @@
   border:2px solid #ff0000
   }
 
+.commentPost {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 70px;
+  max-width: 95%;
+  width: 2000px;
+}
+
+.postCommentButtton {
+  text-align: left;
+}
+
 

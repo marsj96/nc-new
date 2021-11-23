@@ -7,6 +7,7 @@ import { getSingleArticle } from "../utils/getArticles"
 const Article = () => {
 
     const [singleArticle, setSingleArticle] = useState([])
+    const [postComment, setPostComment] = useState(false)
     const { article_id } = useParams()
     const { loggedIn } = useContext(UserContext)
 
@@ -24,7 +25,22 @@ const Article = () => {
             <div> <p className="articleBottom"> {singleArticle.author} Votes:{singleArticle.votes} {singleArticle.created_at} </p>  </div>
         </div>     
         <div>
-            {loggedIn ? <button> Post a comment </button> : <button> Please log in to post a comment </button>}            
+
+            {loggedIn ? <div> <button className="postCommentButton" onClick={()=>{
+                setPostComment(true)
+            }}> Post a comment </button> <button onClick={()=>{
+                setPostComment(false)
+            }}> X </button> </div>: <p> Please log in to post a comment. </p>}  
+
+            {postComment ? 
+            <form >
+            <label> 
+                <textarea className="commentPost" type="text"/>
+            </label>
+            <br></br>
+                <input className="loginButton" type="submit" value="Post"/> 
+            </form>
+            : ""}         
         </div>
         <br></br>
         <div>
