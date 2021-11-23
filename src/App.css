@@ -153,7 +153,27 @@
   width: 2000px;
 }
 
-.postCommentButtton {
+.commentCard {
+  background-color: rgb(41, 41, 41);
+  color: white;
+  border-radius: 2.5px;
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 10px;
+}
+
+.commentAuthor {
+  padding-left: 15px;
+  text-align: left;
+}
+
+.commentBody {
+  padding-left: 10px;
   text-align: left;
 }
 
