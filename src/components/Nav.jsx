@@ -8,6 +8,7 @@ const Nav = () => {
 
     const [users, setUsers] = useState([])
     const [userInput, setUsersInput] = useState("")
+    const [inputError, setInputError] = useState(false)
 
     const { setLoggedIn, user, setUser, loggedIn } = useContext(UserContext)
 
@@ -21,26 +22,27 @@ const Nav = () => {
     
 
     const handleChange = (event) => {
-        console.log(userInput)
-        setUsersInput(event.target.value)
+        const currentUser = event.target.value
+        setUsersInput(currentUser)
+        handleSubmit(event, currentUser)
       }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event, currentUser) => {
         event.preventDefault()
-        setUser(userInput)
+        setUser(currentUser)
 
         users.forEach(singleUser => {
             if(singleUser.username === user) {
                 setUser(singleUser)
                 setLoggedIn(true)
+            } else {
+                setInputError(true)
             }
         });
     }
-    
-    console.log(loggedIn)
 
+    // returns navBar with login avatar
     if(loggedIn) {
-
         return (
             <nav className="bar">
                 <nav className="navBar"> 
@@ -53,13 +55,13 @@ const Nav = () => {
             </nav>
         )
     }
-
+    // returns navBar with no login 
     return (
         <nav className="bar">
             <nav className="navBar"> 
             <form className="loginBox" onSubmit={handleSubmit}>
             <label> 
-                <input className="inputBox" type="text" value={userInput} onChange={handleChange}/>
+                <input className={inputError ? 'error' : ''} type="text" value={userInput} onChange={handleChange}/>
             </label>
                 <input className="loginButton" type="submit" value="Login"/>
             </form>
