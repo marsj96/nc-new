@@ -12,16 +12,8 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.mainHeader {
+  padding-top: 50px;
 }
 
 .App-link {
@@ -38,17 +30,76 @@
 }
 
 .navBar {
+  color:ivory;
   position: fixed;
-  top: 5px;
-  right: 1em;
+  top: 0px;
+  right: 0px;
   word-spacing: 10px;
+  background-color: rgb(71, 71, 71);
+  width: 100%;
+  height: 40px;
+}
+
+.navBarButtons {
+  position: fixed;
+  top: -10px;
+  right: 10px;
+}
+
+.navBarHeader {
+  position: fixed;
+  top: -10px;
+  right: 47%;
+}
+
+.loginBox {
+  position: fixed;
+  top: 9px;
+  left: 5px;
+}
+
+.loginBox {
+  position: fixed;
+  top: 9px;
+  left: 5px;
 }
 
 .loginButton {
+  margin-left: 5px;
+}
+
+.inputBox {
+  max-width: 100px;
+}
+
+.avatarIMG {
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%;
   position: fixed;
-  top: 5px;
   left: 10px;
-  text-align: left;
+  top: 10px;
+  max-width: 100px;
+  max-height: 20px;
+}
+
+.usernameNav {
+  position: fixed;
+  left: 30px;
+  top: -11px;
+  max-width: 20px;
+  max-height: 20px;
+}
+
+.usernameError {
+  position: fixed;
+  font-size: small;
+  left: 270px;
+  top: -8px;
+  max-width: 20px;
+  max-height: 20px;
+  
 }
 
 .filterBy {
@@ -57,8 +108,7 @@
 }
 
 .articlesPage {
-  border: solid red;
-  padding-top: 5px;
+  padding-top: 0px;
   padding-left: 10px;
   left: 10px;
 }
@@ -90,3 +140,5 @@
 .ascButton {
   margin-left: 4px;
 }
+
+
