@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getArticles } from "../utils/getArticles";
 
 const Home = () => {
@@ -58,11 +59,13 @@ const Home = () => {
 
             {articles.map((article)=>{
                 return (
+                    <Link to={`/articles/${article.article_id}`} style={{ textDecoration: 'none', color: 'white' }}>
                     <div className="articlesCards" key={article.title}>
                     <h4 className="articleTitle" key={article.title}>  {article.title} {`(${article.topic})`} </h4>
                     <p className="articleBody"> {article.body.slice(0, 100)}... </p>
                     <div> <p className="articleBottom"> {article.author} Votes:{article.votes} <button>Comments</button>  {article.created_at.slice(0, 10)} </p>  </div>
                     </div>
+                    </Link>
                 )
             })}
 

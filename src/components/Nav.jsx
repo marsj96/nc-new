@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react"
+import { Link } from "react-router-dom"
 import { useState } from "react/cjs/react.development"
 import { UserContext } from "../contexts/User"
 import { getUsers } from "../utils/getUsers"
@@ -49,12 +50,13 @@ const Nav = () => {
                     <img src={user.avatar_url} alt={user.username} className="avatarIMG"/>
                     <h4 className="usernameNav"> {user.username} </h4>
                     <h4 className="navBarButtons">
-                    Home Topics
+                    <Link to="/">Home</Link> Topics
                     </h4>
                 </nav>
             </nav>
         )
     }
+
     // returns navBar with no login 
     return (
         <nav className="bar">
@@ -66,7 +68,7 @@ const Nav = () => {
                 <input className="loginButton" type="submit" value="Login"/>
             </form>
             <h4 className="navBarButtons">
-            Home Topics
+            <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Home</Link> Topics
             </h4>
             </nav>
         </nav>
