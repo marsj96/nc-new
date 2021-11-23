@@ -5,19 +5,21 @@ const Home = () => {
 
     const [sortBy, setSortBy] = useState("")
     const [articles, setArticles] = useState([])
+    const [order, setOrder] = useState("")
 
     const handleChange = (e) => {
         let {value} = e.target;
         setSortBy(value)
+        setOrder("")
     }
 
     useEffect(() => {
-        getArticles(sortBy).then((returnedArticles) => {
+        getArticles(sortBy, order).then((returnedArticles) => {
             setArticles(returnedArticles)
         })
-    }, [sortBy])
+    }, [sortBy, order])
 
-    console.log(articles)
+    console.log(order)
 
     return (
         <div>
@@ -39,14 +41,19 @@ const Home = () => {
                     Votes
                 </option>
                 <option>
-                    Comment count
+                    Comment_count
                 </option>
                 <option>
                     Author
                 </option>
             </select>
+            <button className="ascButton" onClick={()=>{
+                setOrder("ASC")     
+            }}> ↑ </button> <button onClick={()=>{
+                setOrder("DESC")
+            }} > ↓ </button>
         </div>
-
+        
         <br></br>
 
         {/* articles body */}
@@ -56,8 +63,8 @@ const Home = () => {
                 return (
                     <div className="articlesCards">
                     <h4 className="articleTitle" key={article.title}>  {article.title} {`(${article.topic})`} </h4>
-                    <p className="articleBody"> {article.body.slice(0, 75)}... </p>
-                    <div> <p className="articleBottom"> {article.author} Votes:{article.votes} <button>Comments</button> </p>  </div>
+                    <p className="articleBody"> {article.body.slice(0, 100)}... </p>
+                    <div> <p className="articleBottom"> {article.author} Votes:{article.votes} <button>Comments</button>  {article.created_at.slice(0, 10)} </p>  </div>
                     </div>
                 )
             })}
