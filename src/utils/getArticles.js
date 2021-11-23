@@ -28,3 +28,12 @@ export const getArticles = (query, order) => {
 
     
 }
+
+export const getSingleArticle = (id) => {
+
+        return newsAPI.get(`/articles/${id}`)
+        .then((res) => {
+            return res.data.articles
+        })
+
+}
