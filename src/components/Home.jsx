@@ -20,7 +20,7 @@ const Home = () => {
     }, [sortBy, order])
 
     console.log(order)
-
+    
     return (
         <div>
 
