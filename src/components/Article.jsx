@@ -16,7 +16,7 @@ const Article = () => {
     const [comments, setComment] = useState([])
 
 
-    const { article_id } = useParams()
+    let { article_id } = useParams()
     const { loggedIn, user } = useContext(UserContext)
 
     const handleChange = (event) => {
@@ -40,7 +40,7 @@ const Article = () => {
         getComments(article_id).then((comments)=>{
             setComment(comments)
         })
-    }, [article_id])
+    }, [article_id, postComment])
 
     const sendComment = () => {
         postSingleComment(article_id, {username: user.username, body: commentContent})
@@ -95,6 +95,7 @@ const Article = () => {
                     <div className="commentCard" key={comment.comment_id}>
                     <h3 className="commentAuthor"> {comment.author} </h3>
                     <p className="commentBody"> {comment.body} </p>
+                    <p className="votesComment"> {comment.votes} </p>
                     </div>
                 )
             })}

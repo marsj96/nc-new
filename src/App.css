@@ -177,4 +177,10 @@
   text-align: left;
 }
 
+.votesComment {
+  border-radius: 100%;
+  max-width: min-content;
+  text-align: left;
+}
+
 
