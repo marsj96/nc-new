@@ -15,6 +15,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Home/>}/>
+          <Route path='/:article_id' element={<Home/>}/>
         </Routes>
       </div>
       </BrowserRouter>
