@@ -19,11 +19,8 @@ const Home = () => {
         })
     }, [sortBy, order])
 
-    console.log(order)
-    
     return (
         <div>
-
         {/* filter box */}
         <div className="filterBy">
             Filter:  
@@ -61,7 +58,7 @@ const Home = () => {
 
             {articles.map((article)=>{
                 return (
-                    <div className="articlesCards">
+                    <div className="articlesCards" key={article.title}>
                     <h4 className="articleTitle" key={article.title}>  {article.title} {`(${article.topic})`} </h4>
                     <p className="articleBody"> {article.body.slice(0, 100)}... </p>
                     <div> <p className="articleBottom"> {article.author} Votes:{article.votes} <button>Comments</button>  {article.created_at.slice(0, 10)} </p>  </div>
