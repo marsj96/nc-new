@@ -1,14 +1,14 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Header from './components/Header';
 import Nav from './components/Nav';
 import Home from './components/Home';
-import { UserProidver } from './contexts/user';
-
+import Header from './components/Header';
+import { UserProvider } from './contexts/User';
 
 function App() {
+
   return (
-    <UserProidver>
+    <UserProvider>
       <BrowserRouter>
       <div className="App">
         <Nav />
@@ -18,7 +18,7 @@ function App() {
         </Routes>
       </div>
       </BrowserRouter>
-    </UserProidver>
+    </UserProvider>
   );
 }
 
