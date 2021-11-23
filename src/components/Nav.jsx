@@ -50,7 +50,7 @@ const Nav = () => {
                     <img src={user.avatar_url} alt={user.username} className="avatarIMG"/>
                     <h4 className="usernameNav"> {user.username} </h4>
                     <h4 className="navBarButtons">
-                    <Link to="/">Home</Link> Topics
+                    <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Home</Link> Topics
                     </h4>
                 </nav>
             </nav>
