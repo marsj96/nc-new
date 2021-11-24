@@ -45,78 +45,113 @@ const Article = () => {
 
     return (
     <div>
-        <div className="articlesCards" key={singleArticle.article_id}>
-            <h4 className="articlesTitle" key={singleArticle.title}>  {singleArticle.title} {`(${singleArticle.topic})`} </h4>
-            <p className="articleBody"> {singleArticle.body} </p>
-            <div> <div className="articleBottom"> {singleArticle.author} 
-            {loggedIn ? 
-            <div>
-                Votes: {singleArticle.votes + votes} <button onClick={()=>{
-                patchArticleVote(article_id, 1)
-                setPostComment(false)
-                setVotes((prevVote)=>{
-                    const newVote = prevVote
-                    return newVote+1
-                })
-            }}> up </button> <button onClick={()=>{
-                patchArticleVote(article_id, -1)
-                setVotes((prevVote)=>{
-                    const newVote = prevVote
-                    return newVote-1
-                })
-            }}> down </button>
-            </div>: ""} 
-               {singleArticle.created_at} </div>  </div>
-        </div>     
-        <div>
+        <div key={singleArticle.article_id}>
+            <ul className="articlesCards">
 
+                {/* article title */}
+                <li>
+                    <h2 className="articleTitle" key={singleArticle.title}>  
+                        {singleArticle.title} 
+                    </h2>
+                </li>
+
+                {/* article body */}
+                <li>
+                    <p className="articleBody"> {singleArticle.body} </p>
+                </li>
+
+                {/* article bottom (votes, author) */}
+                <li>
+                    <div className="articleBottom">
+                        <h4  className="articleBottom">
+                            {singleArticle.author} Votes:{`${singleArticle.votes + votes} `} 
+                        </h4>
+                        {loggedIn ?
+                        <p className="upvoteButton">
+                            <button onClick={()=>{
+                                patchArticleVote(article_id, 1)
+                                setPostComment(false)
+                                setVotes((prevVote)=>{
+                                    const newVote = prevVote
+                                    return newVote+1
+                                })
+                                }}> 
+                                    + 
+                            </button> 
+                        </p> : ""}
+
+                        {loggedIn ?
+                        <p className="upvoteButton">
+                            <button onClick={()=>{
+                                patchArticleVote(article_id, -1)
+                                setVotes((prevVote)=>{
+                                const newVote = prevVote
+                                return newVote-1
+                                })}}> 
+                                    - 
+                            </button> 
+                        </p> : ""} 
+                    </div>
+                </li>
+            </ul>
+            
+            {/* Post a comment box (only renders if logged in) */}
             {loggedIn ? 
             <div> 
                 <button className="postCommentButton" onClick={()=>{
                     setPostComment(true)
                     setCancelPost(true)
                     }}>
-                Post a comment 
+                        Post a comment 
                 </button>
 
-            {cancelPost ? <button onClick={()=>{
-                setPostComment(false)
-                setCancelPost(false)
-                }}>
-                X 
-                </button> : ""}
-            </div> : <p> Please log in to post a comment. </p>}  
+            {/* Button to cancel post (only appears if post box has been opened) */}
+                {cancelPost ? 
+                    <button onClick={()=>{
+                        setPostComment(false)
+                        setCancelPost(false)
+                        }}>
+                            X 
+                    </button> : ""}
+                </div> 
+                    : 
+                <p> Please log in to post a comment. </p>}  
 
-            {postComment ? 
-            <form onSubmit={handleSubmit}>
-            <label> 
-                <textarea className="commentPost" type="text" value={userInput} onChange={handleChange}/>
-            </label>
-            <br></br>
-                <input className="loginButton" type="submit" value="Post" onClick={()=>{
-                    postSingleComment(article_id, {username: user.username, body: commentContent})
-                    setPostComment(false)
-                    setCancelPost(false)
-                    setComment((prevValue)=>{
-                        const newComments = [...prevValue]
-                        newComments.unshift({author: user.username, body: commentContent, votes: 0, created_at: "Just now..", comment_id: 500})
-                        return newComments
-                    })
-                }}/> 
-            </form>
-            : ""}         
-        </div>
-        <br></br>
+
+             {/* If postcomment is true, re-renders to display a text area in which user can post comment */}
+                {postComment ? 
+                <form onSubmit={handleSubmit}>
+                    <label> 
+                        <textarea className="commentPost" type="text" value={userInput} onChange={handleChange}/>
+                    </label>
+
+                    
+                {/* Post comment button that resets the state to close the comment box and sends a post request. Temporarliy updates state of comments to show comment when posted. */}
+                    <input className="loginButton" type="submit" value="Send" onClick={()=>{
+                        postSingleComment(article_id, {username: user.username, body: commentContent})
+                        setPostComment(false)
+                        setCancelPost(false)
+                        setComment((prevValue)=>{
+                            const newComments = [...prevValue]
+                            newComments.unshift({author: user.username, body: commentContent, votes: 0, created_at: "Just now..", comment_id: 500})
+                            return newComments
+                        })
+                    }}/> 
+                </form>
+                : ""}         
+            </div>
+        
         <div>
             {comments.map((comment)=>{
                 return (
                     <div className="commentCard" key={comment.comment_id}>
                     <h3 className="commentAuthor"> {comment.author} </h3>
                     <p className="commentBody"> {comment.body} </p>
-                    <p className="votesComment"> Votes:{comment.votes} {comment.created_at}</p>   
+                    <p className="votesComment"> {comment.created_at.slice(0,10)}</p>   
                     </div>
                 )
             })}
+        
         </div>
     </div>
     )
