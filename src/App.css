@@ -58,12 +58,6 @@
   left: 5px;
 }
 
-.loginBox {
-  position: fixed;
-  top: 9px;
-  left: 5px;
-}
-
 .loginButton {
   margin-left: 5px;
 }
@@ -126,6 +120,7 @@
 
 .articleTitle {
   text-align: left;
+  margin-bottom: -5px;
 }
 
 .articleBody {
@@ -135,6 +130,10 @@
 .articleBottom {
   text-align: left;
   word-spacing: 20px;
+}
+
+.topicArticle {
+  text-align: left;
 }
 
 .ascButton {
