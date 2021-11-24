@@ -59,16 +59,38 @@ const Home = () => {
 
             {articles.map((article)=>{
                 return (
-                    <Link to={`/articles/${article.article_id}`} key={article.article_id} style={{ textDecoration: 'none', color: 'white' }}>
-                    <div className="articlesCards">
-                    <h4 className="articleTitle" key={article.title}>  {article.title} <Link to={`/topics/${article.topic}`}>{`(${article.topic})`}</Link> </h4>
-                    <p className="articleBody"> {article.body.slice(0, 100)}... </p>
-                    <div> <p className="articleBottom"> {article.author} Votes:{article.votes} <button>Comments</button>  {article.created_at.slice(0, 10)} </p>  </div>
-                    </div>
-                    </Link>
+                    <ul className="articlesCards">
+
+                        <li  key={article.title}> 
+                            <Link to={`/articles/${article.article_id}`} style={{ textDecoration: 'none', color: 'white' }}>
+                                <h2 className="articleTitle"> 
+                                    {article.title}                                         
+                                </h2> 
+                            </Link>                           
+                            <Link to={`/topics/${article.topic}`} style={{ textDecoration: 'none', color: 'blue' }} className="articleTitle">
+                                <p>
+                                    {` (${article.topic})`}
+                                </p>  
+                            </Link> 
+                        </li>
+
+                        <li className="articleBody" key={article.body}> 
+                            <p> {article.body.slice(0, 200)}... </p>
+                        </li>
+                        
+                        <li className="articleBottom">
+                            <p key={article.author}>
+                                {article.author} Votes:{article.votes} {article.created_at.slice(0, 10)} ->
+                                <button>
+                                    <Link to={`/articles/${article.article_id}`} style={{ textDecoration: 'none', color: 'black' }}>
+                                    Comments
+                                    </Link>
+                                </button>
+                            </p>
+                        </li>                   
+                    </ul>          
                 )
             })}
-
         </div>
         </div>
     )
