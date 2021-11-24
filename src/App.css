@@ -120,7 +120,7 @@
   margin-bottom: 10px;
   padding-right: 10px;
   padding-top: 1px;
-  padding-bottom: 1px;
+  padding-bottom: 10px;
   padding-left: 10px;
 }
 
@@ -178,8 +178,6 @@
 }
 
 .votesComment {
-  border-radius: 100%;
-  max-width: min-content;
   text-align: left;
 }
 
