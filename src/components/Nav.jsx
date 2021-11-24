@@ -63,7 +63,7 @@ const Nav = () => {
             <nav className="navBar"> 
             <form className="loginBox" onSubmit={handleSubmit}>
             <label> 
-                <input className={inputError ? 'error' : ''} type="text" value={userInput} onChange={handleChange}/>
+                <input className={inputError ? 'error' : ''} type="text" value={userInput} style={{ width:"90px" }} onChange={handleChange}/>
             </label>
                 <input className="loginButton" type="submit" value="Login"/>
             </form>
