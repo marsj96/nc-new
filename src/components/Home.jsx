@@ -61,6 +61,7 @@ const Home = () => {
                 return (
                     <ul className="articlesCards">
 
+                        {/*Header and title for each article card*/}
                         <li  key={article.title}> 
                             <Link to={`/articles/${article.article_id}`} style={{ textDecoration: 'none', color: 'white' }}>
                                 <h2 className="articleTitle"> 
@@ -74,18 +75,20 @@ const Home = () => {
                             </Link> 
                         </li>
 
+                        {/*Body of article card*/}
                         <li className="articleBody" key={article.body}> 
                             <p> {article.body.slice(0, 200)}... </p>
                         </li>
                         
-                        <li className="articleBottom">
-                            <p key={article.author}>
-                                {article.author} Votes:{article.votes} {article.created_at.slice(0, 10)} ->
-                                <button>
-                                    <Link to={`/articles/${article.article_id}`} style={{ textDecoration: 'none', color: 'black' }}>
-                                    Comments
-                                    </Link>
-                                </button>
+                        {/*Bottom of article card, includes the author, votes, created_at and the link to comments*/}
+                        <li>
+                            <p key={article.author} className="articleBottom">
+                                {`${article.author} `}
+                                Votes:{`${article.votes} `}
+                                {`${article.created_at.slice(0, 10)} `}
+                                <Link to={`/articles/${article.article_id}`} style={{ textDecoration: 'none', color: 'blue' }}>
+                                Comments
+                                </Link>
                             </p>
                         </li>                   
                     </ul>          
