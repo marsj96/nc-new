@@ -21,7 +21,7 @@ const Home = () => {
     }, [sortBy, order])
 
     return (
-        <div>
+    <div>
         {/* filter box */}
         <div className="filterBy">
             Filter:  
@@ -62,9 +62,9 @@ const Home = () => {
                     <ul className="articlesCards">
 
                         {/*Header and title for each article card*/}
-                        <li  key={article.title}> 
+                        <li key={article.article_id}> 
                             <Link to={`/articles/${article.article_id}`} style={{ textDecoration: 'none', color: 'white' }}>
-                                <h2 className="articleTitle"> 
+                                <h2 className="articleTitle" key={article.article_id}> 
                                     {article.title}                                         
                                 </h2> 
                             </Link>                           
@@ -76,13 +76,15 @@ const Home = () => {
                         </li>
 
                         {/*Body of article card*/}
-                        <li className="articleBody" key={article.body}> 
-                            <p> {article.body.slice(0, 200)}... </p>
-                        </li>
+                        <Link to={`/articles/${article.article_id}`} style={{ textDecoration: 'none', color: 'white' }}>
+                            <li className="articleBody" key={article.body}> 
+                                <p key={article.body}> {article.body.slice(0, 200)}... </p>
+                            </li>
+                        </Link>    
                         
                         {/*Bottom of article card, includes the author, votes, created_at and the link to comments*/}
-                        <li>
-                            <p key={article.author} className="articleBottom">
+                        <li key={article.created_at}>
+                            <p className="articleBottom" key={article.created_at}>
                                 {`${article.author} `}
                                 Votes:{`${article.votes} `}
                                 {`${article.created_at.slice(0, 10)} `}
@@ -90,12 +92,13 @@ const Home = () => {
                                 Comments
                                 </Link>
                             </p>
-                        </li>                   
+                        </li>   
+                
                     </ul>          
                 )
             })}
         </div>
-        </div>
+    </div>
     )
 }
 

@@ -61,15 +61,18 @@ const Nav = () => {
     return (
         <nav className="bar">
             <nav className="navBar"> 
-            <form className="loginBox" onSubmit={handleSubmit}>
-            <label> 
-                <input className={inputError ? 'error' : ''} type="text" value={userInput} style={{ width:"90px" }} onChange={handleChange}/>
-            </label>
-                <input className="loginButton" type="submit" value="Login"/>
-            </form>
-            <h4 className="navBarButtons">
-            <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Home</Link> Topics
-            </h4>
+                <form className="loginBox" onSubmit={handleSubmit}>
+                    <label> 
+                        <input className={inputError ? 'error' : ''} type="text" value={userInput} style={{ width:"90px" }} onChange={handleChange}/>
+                    </label>
+                        <input className="loginButton" type="submit" value="Login"/>
+                </form>
+                <h4 className="navBarButtons">
+                    <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+                        {`Home `}
+                    </Link> 
+                        {`Topics `}
+                </h4>
             </nav>
         </nav>
     )
