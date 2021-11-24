@@ -8,7 +8,8 @@ export const getTopics = (topic) => {
 
         return newsAPI.get(`/articles?topic=${topic}`)
         .then((res) => {
-            return res.data.topics
+            console.log(res)
+            return res.data.articles
         })
 
 }
