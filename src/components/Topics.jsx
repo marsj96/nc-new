@@ -1,4 +1,5 @@
 import { useParams } from "react-router"
+import { Link } from "react-router-dom"
 import { useEffect, useState } from "react/cjs/react.development"
 import { getTopics } from "../utils/getTopic"
 
@@ -19,7 +20,9 @@ const Topics = () => {
         <div>{topics.map((topic)=>{
             return (
                 <div key={topic.article_id}>
-                    {topic.title}
+                    <Link to={`/articles/${topic.article_id}`}>
+                        {topic.title}
+                    </Link>  
                 </div>
             )
            
