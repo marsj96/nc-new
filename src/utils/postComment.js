@@ -5,10 +5,8 @@ const newsAPI = axios.create({
 })
 
 export const postSingleComment = (id, comment) => {
-    console.log(comment)
     return newsAPI.post(`/articles/${id}/comments`, comment)
         .then((res) => {
-        console.log(res)
         return res.data
         })
 }

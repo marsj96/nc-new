@@ -11,7 +11,6 @@ const Topics = () => {
 
     useEffect(()=>{
         getTopics(filter.topic).then((response)=>{
-            console.log(response)
             setTopics(response)
         })
     }, [filter.topic])

@@ -16,7 +16,6 @@ const Home = () => {
 
     const handleChange = (e) => {
         let {value} = e.target;
-        console.log("-------->", value)
         setSortBy(value)
         setOrder("")
     }
