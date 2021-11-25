@@ -38,6 +38,7 @@ const Article = () => {
         })
     }, [article_id])
 
+
     useEffect(() => {
         getComments(article_id).then((comments)=>{
             setComment(comments)
@@ -127,7 +128,7 @@ const Article = () => {
                         setPostComment(false)
                         setCancelPost(false)
                         }}>
-                            Cancel 
+                            X 
                     </Button> : ""}
                 </div> 
                     : 
