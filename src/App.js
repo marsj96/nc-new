@@ -6,6 +6,7 @@ import Header from './components/Header';
 import { UserProvider } from './contexts/User';
 import Article from './components/Article';
 import Topics from './components/Topics';
+import AllTopics from './components/AllTopics';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/articles/:article_id' element={<Article/>}/>
+          <Route path='/topics' element={<AllTopics/>}/>
           <Route path='/topics/:topic' element={<Topics/>}/>
         </Routes>
       </div>
