@@ -6,6 +6,7 @@ import { getSingleArticle } from "../utils/getArticles"
 import { getComments } from "../utils/getComments"
 import { patchArticleVote } from "../utils/patchArticleVotes"
 import { postSingleComment } from "../utils/postComment"
+import { TextField, Button } from "@mui/material"
 
 const Article = () => {
 
@@ -98,21 +99,34 @@ const Article = () => {
             {/* Post a comment box (only renders if logged in) */}
             {loggedIn ? 
             <div> 
-                <button className="postCommentButton" onClick={()=>{
+                <Button variant="contained" style={{
+                        borderRadius: 20,
+                        marginBottom: "15px",
+                        marginRight: "10px",
+                        background: "#394053",
+                        color: "white"
+                     }}  
+                     onClick={()=>{
                     setPostComment(true)
                     setCancelPost(true)
                     }}>
                         Post a comment 
-                </button>
+                </Button>
 
             {/* Button to cancel post (only appears if post box has been opened) */}
                 {cancelPost ? 
-                    <button onClick={()=>{
+                     <Button variant="contained" style={{
+                        borderRadius: 20,
+                        marginBottom: "15px",
+                        background: "#D22B2B",
+                        color: "white"
+                     }} 
+                     onClick={()=>{
                         setPostComment(false)
                         setCancelPost(false)
                         }}>
-                            X 
-                    </button> : ""}
+                            Cancel 
+                    </Button> : ""}
                 </div> 
                     : 
                 <p> Please log in to post a comment. </p>}  
@@ -122,12 +136,13 @@ const Article = () => {
                 {postComment ? 
                 <form onSubmit={handleSubmit}>
                     <label> 
-                        <textarea className="commentPost" type="text" value={userInput} onChange={handleChange}/>
+                        <TextField fullWidth id="standard-basic" className="commentPost" style= {{border: "white"}}label="Your comment" variant="outlined" value={userInput} onChange={handleChange} />
+                        {/* <textarea className="commentPost" type="text"  /> */}
                     </label>
 
                     
                 {/* Post comment button that resets the state to close the comment box and sends a post request. Temporarliy updates state of comments to show comment when posted. */}
-                    <input className="loginButton" type="submit" value="Send" onClick={()=>{
+                    <Button className="loginButton" type="submit" value="Send" onClick={()=>{
                         postSingleComment(article_id, {username: user.username, body: commentContent})
                         setPostComment(false)
                         setCancelPost(false)
@@ -136,7 +151,7 @@ const Article = () => {
                             newComments.unshift({author: user.username, body: commentContent, votes: 0, created_at: "Just now..", comment_id: 500})
                             return newComments
                         })
-                    }}/> 
+                    }}/>
                 </form>
                 : ""}         
             </div>

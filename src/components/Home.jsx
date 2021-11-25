@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getArticles } from "../utils/getArticles";
-import { Select } from "@mui/material";
 import { Box } from "@mui/system";
-import { NativeSelect } from "@mui/material";
+import { Button, Card, CardActions, NativeSelect } from "@mui/material";
 import { InputLabel } from "@mui/material";
 
 const Home = () => {
@@ -37,6 +36,7 @@ const Home = () => {
             </InputLabel>
 
             <NativeSelect onChange={handleChange}>
+                <option value={"Date"}>Date</option>
                 <option value={"Title"}>Title</option>
                 <option value={"Topic"}>Topic</option>
                 <option value={"Votes"}>Votes</option>
@@ -45,28 +45,31 @@ const Home = () => {
             </NativeSelect>
             
         </Box>
-                {/* </option>
-                <option>
-                    Title
-                </option>
-                <option>
-                    Topic
-                </option>
-                <option>
-                    Votes
-                </option>
-                <option>
-                    Comment_count
-                </option>
-                <option>
-                    Author
-                </option> */}
-            <button className="ascButton" onClick={()=>{
-                setOrder("ASC")     
-            }}> ↑ </button> 
-            <button className="ascButton" onClick={()=>{
+            <Button className="ascButton" style={{
+                        borderRadius: "20",
+                        maxHeight: "30px",
+                        marginTop: "20px",
+                        marginLeft: "20px",
+                        marginBottom: "15px",
+                        marginRight: "10px",
+                        background: "#394053",
+                        color: "white"
+                     }}  
+                     onClick={()=>{
+                    setOrder("ASC")     
+            }}> ASC </Button> 
+            <Button className="ascButton" style={{
+                        borderRadius: "20",
+                        maxHeight: "30px",
+                        marginBottom: "15px",
+                        marginTop: "20px",
+                        marginRight: "10px",
+                        background: "#394053",
+                        color: "white"
+                     }}  
+                     onClick={()=>{
                 setOrder("DESC")
-            }} > ↓ </button>
+            }} > DESC </Button>
         </div>
         
         <br></br>
@@ -76,6 +79,7 @@ const Home = () => {
 
             {articles.map((article)=>{
                 return (
+                    <Card variant="outlined" style={{margin: "10px"}}>
                     <ul className="articlesCards">
 
                         {/*Header and title for each article card*/}
@@ -105,14 +109,16 @@ const Home = () => {
                                 {`${article.author} `}
                                 Votes:{`${article.votes} `}
                                 {`${article.created_at.slice(0, 10)} `}
-                                <Link to={`/articles/${article.article_id}`} style={{ textDecoration: 'none', color: 'blue' }}>
-                                Comments 
-                                </Link>
-                                {` (${article.comment_count})`}
+                                <CardActions>
+                                    <Link to={`/articles/${article.article_id}`} style={{ textDecoration: 'none', color: 'blue' }}>
+                                    <Button size="small" style={{marginTop: "30px"}}>Comments</Button> 
+                                    </Link>
+                                </CardActions>      
                             </p>
                         </li>   
                 
-                    </ul>          
+                    </ul>
+                    </Card>          
                 )
             })}
         </div>
