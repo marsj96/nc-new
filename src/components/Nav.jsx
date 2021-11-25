@@ -50,7 +50,12 @@ const Nav = () => {
                     <img src={user.avatar_url} alt={user.username} className="avatarIMG"/>
                     <h4 className="usernameNav"> {user.username} </h4>
                     <h4 className="navBarButtons">
-                    <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Home</Link> Topics
+                    <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+                        {`Home `}
+                    </Link> 
+                    <Link to="/topics" style={{ textDecoration: 'none', color: 'white' }}>
+                        {`Topics `}
+                    </Link>
                     </h4>
                 </nav>
             </nav>
@@ -70,8 +75,10 @@ const Nav = () => {
                 <h4 className="navBarButtons">
                     <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
                         {`Home `}
-                    </Link> 
+                    </Link>
+                    <Link to="/topics" style={{ textDecoration: 'none', color: 'white' }}>
                         {`Topics `}
+                    </Link>
                 </h4>
             </nav>
         </nav>
