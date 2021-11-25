@@ -16,11 +16,9 @@ const Topics = () => {
         })
     }, [filter.topic])
 
-    // let header = 
-    // header = header.charAt(0).toUpperCase() + header.slice(1)
-
     return (
         <div>
+            {topics.length > 0 ? <h2> {topics[0].topic.charAt(0).toUpperCase() + topics[0].topic.slice(1)} Articles </h2> : " "}
         {topics.map((topic)=>{
             return (
                 <div key={topic.article_id}>
