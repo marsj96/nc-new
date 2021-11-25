@@ -5,8 +5,9 @@ import { getArticles } from "../utils/getArticles";
 const Home = () => {
 
     const [sortBy, setSortBy] = useState("")
-    const [articles, setArticles] = useState([])
     const [order, setOrder] = useState("")
+    const [articles, setArticles] = useState([])
+    
 
     const handleChange = (e) => {
         let {value} = e.target;
@@ -47,7 +48,8 @@ const Home = () => {
             </select>
             <button className="ascButton" onClick={()=>{
                 setOrder("ASC")     
-            }}> ↑ </button> <button onClick={()=>{
+            }}> ↑ </button> 
+            <button className="ascButton" onClick={()=>{
                 setOrder("DESC")
             }} > ↓ </button>
         </div>
