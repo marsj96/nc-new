@@ -16,13 +16,33 @@ const Topics = () => {
         })
     }, [filter.topic])
 
+    // let header = 
+    // header = header.charAt(0).toUpperCase() + header.slice(1)
+
     return (
-        <div>{topics.map((topic)=>{
+        <div>
+        {topics.map((topic)=>{
             return (
                 <div key={topic.article_id}>
-                    <Link to={`/articles/${topic.article_id}`}>
-                        {topic.title}
-                    </Link>  
+                    <ul className="articlesCards">
+                        <li>
+                            <Link to={`/articles/${topic.article_id}`} style={{ textDecoration: 'none', color: 'white' }}>
+                                <h2 className="articleTitle"> {topic.title} </h2>
+                            </Link>
+                        </li>
+                        <li className="articleBody">
+                            <p>
+                                {topic.body.slice(0,100)}...
+                            </p>
+                        </li>
+                        <li>
+                            <p className="articleBottom">
+                                {topic.author} Votes:{topic.votes}
+                            </p>
+                        </li>
+
+                    
+                    </ul>
                 </div>
             )
            
