@@ -6,7 +6,7 @@ import { getSingleArticle } from "../utils/getArticles"
 import { getComments } from "../utils/getComments"
 import { patchArticleVote } from "../utils/patchArticleVotes"
 import { postSingleComment } from "../utils/postComment"
-import { TextField, Button } from "@mui/material"
+import { TextField, Button, Card } from "@mui/material"
 
 const Article = () => {
 
@@ -47,6 +47,7 @@ const Article = () => {
     return (
     <div>
         <div key={singleArticle.article_id}>
+        <Card variant="outlined" style={{margin: "10px", background:"whitesmoke" }}>
             <ul className="articlesCards">
 
                 {/* article title */}
@@ -95,6 +96,7 @@ const Article = () => {
                     </div>
                 </li>
             </ul>
+            </Card>
             
             {/* Post a comment box (only renders if logged in) */}
             {loggedIn ? 
@@ -103,7 +105,7 @@ const Article = () => {
                         borderRadius: 20,
                         marginBottom: "15px",
                         marginRight: "10px",
-                        background: "#394053",
+                        background: "#40c4ff",
                         color: "white"
                      }}  
                      onClick={()=>{
@@ -136,7 +138,7 @@ const Article = () => {
                 {postComment ? 
                 <form onSubmit={handleSubmit}>
                     <label> 
-                        <TextField fullWidth id="standard-basic" className="commentPost" style= {{border: "white"}}label="Your comment" variant="outlined" value={userInput} onChange={handleChange} />
+                        <TextField fullWidth id="standard-basic" className="commentPost" style= {{border: "white"}}label="Press enter to send comment" variant="outlined" value={userInput} onChange={handleChange} />
                         {/* <textarea className="commentPost" type="text"  /> */}
                     </label>
 
@@ -159,15 +161,18 @@ const Article = () => {
         <div>
             {comments.map((comment)=>{
                 return (
-                    <div className="commentCard" key={comment.comment_id}>
+                    <Card key={comment.comment_id} variant="outlined" style={{margin: "10px", background:"whitesmoke" }}>
+                    <div>
                     <h3 className="commentAuthor"> {comment.author} </h3>
                     <p className="commentBody"> {comment.body} </p>
                     <p className="votesComment"> {comment.created_at.slice(0,10)}</p>   
                     </div>
+                    </Card>
                 )
             })}
         
         </div>
+        
     </div>
     )
 }

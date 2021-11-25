@@ -1,3 +1,4 @@
+
 import { useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useState } from "react/cjs/react.development"
@@ -45,6 +46,7 @@ const Nav = () => {
     // returns navBar with login avatar
     if(loggedIn) {
         return (
+            
             <nav className="bar">
                 <nav className="navBar"> 
                     <img src={user.avatar_url} alt={user.username} className="avatarIMG"/>
@@ -68,7 +70,7 @@ const Nav = () => {
             <nav className="navBar"> 
                 <form className="loginBox" onSubmit={handleSubmit}>
                     <label> 
-                        <input className={inputError ? 'error' : ''} type="text" value={userInput} style={{ width:"90px" }} onChange={handleChange}/>
+                        <input className={inputError ? 'error' : 'inputBox'} type="text" value={userInput} style={{ width:"90px" }} onChange={handleChange}/>
                     </label>
                         <input className="loginButton" type="submit" value="Login"/>
                 </form>

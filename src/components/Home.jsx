@@ -52,7 +52,7 @@ const Home = () => {
                         marginLeft: "20px",
                         marginBottom: "15px",
                         marginRight: "10px",
-                        background: "#394053",
+                        background: "#40c4ff",
                         color: "white"
                      }}  
                      onClick={()=>{
@@ -64,7 +64,7 @@ const Home = () => {
                         marginBottom: "15px",
                         marginTop: "20px",
                         marginRight: "10px",
-                        background: "#394053",
+                        background: "#40c4ff",
                         color: "white"
                      }}  
                      onClick={()=>{
@@ -79,7 +79,7 @@ const Home = () => {
 
             {articles.map((article)=>{
                 return (
-                    <Card variant="outlined" style={{margin: "10px"}}>
+                    <Card variant="outlined" style={{margin: "10px", background:"whitesmoke" }}>
                     <ul className="articlesCards">
 
                         {/*Header and title for each article card*/}
@@ -89,11 +89,11 @@ const Home = () => {
                                     {article.title}                                         
                                 </h2> 
                             </Link>                           
-                            <Link to={`/topics/${article.topic}`} style={{ textDecoration: 'none', color: 'blue' }} className="articleTitle">
+                            {/* <Link to={`/topics/${article.topic}`} style={{ textDecoration: 'none', color: 'blue' }} className="articleTitle">
                                 <p>
                                     {` (${article.topic})`}
                                 </p>  
-                            </Link> 
+                            </Link>  */}
                         </li>
 
                         {/*Body of article card*/}
@@ -111,7 +111,7 @@ const Home = () => {
                                 {`${article.created_at.slice(0, 10)} `}
                                 <CardActions>
                                     <Link to={`/articles/${article.article_id}`} style={{ textDecoration: 'none', color: 'blue' }}>
-                                    <Button size="small" style={{marginTop: "30px"}}>Comments</Button> 
+                                    <Button size="small" style={{marginTop: "0px", marginBottom: "-35px", marginLeft: "-10px", background: "#40c4ff", color: "white"}}>Comments</Button> 
                                     </Link>
                                 </CardActions>      
                             </p>
