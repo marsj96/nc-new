@@ -5,13 +5,9 @@ const newsAPI = axios.create({
 })
 
 export const patchArticleVote = (article, amount) => {
-    
-
 
     return newsAPI.patch(`/articles/${article}`, { inc_votes: amount })
         .then((res) => {
-        console.log("RETURN",res)
-      
         return res.data
         })
 }

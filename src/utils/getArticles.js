@@ -15,6 +15,7 @@ export const getArticles = (query, order) => {
 
     if(query !== "" && query !== "Date") {
         const queryValue = query.toLowerCase()
+        console.log(queryValue)
         return newsAPI.get(`/articles?sort_by=${queryValue}`)
         .then((res) => {
         return res.data.articles

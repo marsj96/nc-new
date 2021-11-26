@@ -6,11 +6,6 @@ const newsAPI = axios.create({
 
 export const deleteComment = (comment_id) => {
 
-    console.log(comment_id)
-
         return newsAPI.delete(`/comments/${comment_id}`)
-        .then((res) => {
-            console.log(res)
-        })
 
 }

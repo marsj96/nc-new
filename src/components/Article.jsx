@@ -46,8 +46,6 @@ const Article = () => {
         })
     }, [article_id])
 
-    console.log(user)
-
     return (
     <div>
         <div key={singleArticle.article_id}>
@@ -70,7 +68,7 @@ const Article = () => {
                 <li>
                     <div className="articleBottom">
                         <h4  className="articleBottom">
-                            {singleArticle.author} Votes:{`${singleArticle.votes + votes} `} 
+                            {singleArticle.author} Votes:{`${singleArticle.votes + votes} `} {singleArticle.created_at ? singleArticle.created_at.slice(0,10) : ""}
                         </h4>
                         {loggedIn ?
                         <p className="upvoteButton">
@@ -165,29 +163,34 @@ const Article = () => {
             {/* Maps over comments array and creates a dummy comment to render to page */}
             {comments.map((comment)=>{
                 return (
-                    <Card key={comment.comment_id} variant="outlined" style={{margin: "10px", background:"whitesmoke" }}>
+                <Card key={comment.comment_id} variant="outlined" style={{margin: "10px", background:"whitesmoke" }}>
                     <div>
-                    <h3 className="commentAuthor"> {comment.author} </h3>
-                    <p className="commentBody"> {comment.body} </p>
-                    <p className="votesComment"> {comment.created_at.slice(0,10)}</p>
-                    {loggedIn && user === comment.author ? 
-                    <Button size="small" onClick={()=>{
-                        deleteComment(comment.comment_id)
-                        setComment((prevComments)=>{
-                        let commentCopy = [...prevComments]
-                        
-                        const newComments = commentCopy.filter((singleComment)=>{
-                            return singleComment.comment_id !== comment.comment_id
-                        })
+                        <h3 className="commentAuthor"> {comment.author} </h3>
+                        <p className="commentBody"> {comment.body} </p>
+                        <p className="votesComment"> {comment.created_at.slice(0,10)}</p>
 
-                        return newComments
-                        })
-                    }}>
-                    Delete
-                    </Button>   
-                    : ""}   
+                    {/* If user is logged in and the author matches current user, render comment button */}
+                    {loggedIn && user === comment.author ? 
+                    <p>
+                        <Button size="small" onClick={()=>{
+                            deleteComment(comment.comment_id)
+                            setComment((prevComments)=>{
+                            let commentCopy = [...prevComments]
+                            
+                            const newComments = commentCopy.filter((singleComment)=>{
+                                return singleComment.comment_id !== comment.comment_id
+                            })
+
+                            return newComments
+                            })
+                        }}>
+                        Delete
+                        </Button>   
+                    </p>
+                    : ""}  
+                    
                     </div>
-                    </Card>
+                </Card>
                 )
             })}
         </div>

@@ -31,7 +31,7 @@ const Home = () => {
 
         {/* filter box */}
         <div className="filterBy">
-        <Box sx={{ minWidth: 120 }}>
+        <Box sx={{ minWidth: 80 }}>
             
             <InputLabel variant="standard" htmlFor="uncontrolled-native">
                 Filter
@@ -81,7 +81,7 @@ const Home = () => {
 
             {articles.map((article)=>{
                 return (
-                    <Card variant="outlined" style={{margin: "10px", background:"whitesmoke" }}>
+                    <Card variant="outlined" style={{margin: "10px", background:"whitesmoke" }} key={article.article_id}>
                     <ul className="articlesCards">
 
                         {/*Header and title for each article card*/}
@@ -103,12 +103,14 @@ const Home = () => {
                         {/*Bottom of article card, includes the author, votes, created_at and the link to comments*/}
                         <li key={article.created_at}>
                             <div className="articleBottom" key={article.created_at}>
+                                <h4>
                                 {`${article.author} `}
                                 Votes:{`${article.votes} `}
                                 {`${article.created_at.slice(0, 10)} `}
+                                </h4>
                                 <CardActions>
                                     <Link to={`/articles/${article.article_id}`} style={{ textDecoration: 'none', color: 'blue' }}>
-                                    <Button size="small" style={{marginTop: "15px", marginLeft: "-10px", background: "#40c4ff", color: "white"}}>Comments</Button> 
+                                    <Button size="small" style={{marginTop: "-20px", marginLeft: "-10px", background: "#40c4ff", color: "white"}}>Comments</Button> 
                                     </Link>
                                 </CardActions>      
                             </div>

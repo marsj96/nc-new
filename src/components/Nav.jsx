@@ -40,8 +40,6 @@ const Nav = () => {
         setUser(value)
     }
 
-    console.log(users)
-
     return (
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static" >

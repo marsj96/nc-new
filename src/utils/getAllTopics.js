@@ -8,7 +8,6 @@ export const getAllTopics = () => {
 
         return newsAPI.get(`/topics`)
         .then((res) => {
-            console.log(res)
             return res.data.topics
         })
 
