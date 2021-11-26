@@ -142,7 +142,7 @@ const Article = () => {
                 {postComment ? 
                 <form onSubmit={handleSubmit}>
                     <label> 
-                        <TextField fullWidth id="standard-basic" className="commentPost" style= {{border: "white"}}label="Press enter to send comment" variant="outlined" value={userInput} onChange={handleChange} />
+                        <TextField fullWidth id="standard-basic" className="commentPost" multiLine={true} rows={2} style= {{border: "white"}}label="Press enter to send comment" variant="outlined" value={userInput} onChange={handleChange} />
                         {/* <textarea className="commentPost" type="text"  /> */}
                     </label>
 
@@ -190,7 +190,6 @@ const Article = () => {
                     </Card>
                 )
             })}
-        
         </div>
         
     </div>

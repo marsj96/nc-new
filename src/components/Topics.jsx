@@ -24,23 +24,21 @@ const Topics = () => {
                 <div key={topic.article_id}>
                     <Card variant="outlined" style={{margin: "10px", background:"whitesmoke" }}>
                     <ul className="articlesCards">
-                        <li>
-                            <Link to={`/articles/${topic.article_id}`} style={{ textDecoration: 'none', color: 'white' }}>
-                                <h2 className="articleTitle"> {topic.title} </h2>
-                            </Link>
-                        </li>
-                        <li className="articleBody">
-                            <p>
-                                {topic.body.slice(0,100)}...
-                            </p>
-                        </li>
-                        <li>
-                            <p className="articleBottom">
-                                {topic.author} Votes:{topic.votes}
-                            </p>
-                        </li>
-
-                    
+                        <Link to={`/articles/${topic.article_id}`} style={{ textDecoration: 'none'}}>
+                            <li>                               
+                                <h2 className="articleTitle"> {topic.title} </h2>                              
+                            </li>
+                            <li className="articleBody">
+                                <p>
+                                    {topic.body.slice(0,100)}...
+                                </p>
+                            </li>
+                            <li>
+                                <p className="articleBottom" style={{ textDecoration: 'none', color: "black"}}>
+                                    {topic.author} Votes:{topic.votes}
+                                </p>
+                            </li>
+                        </Link>
                     </ul>
                     </Card>
                 </div>

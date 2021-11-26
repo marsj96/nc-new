@@ -15,6 +15,7 @@ function App() {
       <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div className="App">
         <Nav />
+        <main className="main">
         <Header />
         <Routes>
           <Route path='/' element={<Home/>}/>
@@ -22,6 +23,7 @@ function App() {
           <Route path='/topics' element={<AllTopics/>}/>
           <Route path='/topics/:topic' element={<Topics/>}/>
         </Routes>
+        </main>
       </div>
       </BrowserRouter>
     </UserProvider>
