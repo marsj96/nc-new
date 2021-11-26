@@ -7,6 +7,7 @@ import { getComments } from "../utils/getComments"
 import { patchArticleVote } from "../utils/patchArticleVotes"
 import { postSingleComment } from "../utils/postComment"
 import { TextField, Button, Card } from "@mui/material"
+import { deleteComment } from "../utils/deleteComment"
 
 const Article = () => {
 
@@ -44,6 +45,8 @@ const Article = () => {
             setComment(comments)
         })
     }, [article_id])
+
+
 
     return (
     <div>
@@ -91,7 +94,7 @@ const Article = () => {
                                 const newVote = prevVote
                                 return newVote-1
                                 })}}> 
-                                    - 
+                                    <span> - </span>
                             </button> 
                         </p> : ""} 
                     </div>
@@ -166,7 +169,23 @@ const Article = () => {
                     <div>
                     <h3 className="commentAuthor"> {comment.author} </h3>
                     <p className="commentBody"> {comment.body} </p>
-                    <p className="votesComment"> {comment.created_at.slice(0,10)}</p>   
+                    <p className="votesComment"> {comment.created_at.slice(0,10)}</p>
+                    {loggedIn && user.username === comment.author ? 
+                    <Button size="small" onClick={()=>{
+                        deleteComment(comment.comment_id)
+                        setComment((prevComments)=>{
+                        let commentCopy = [...prevComments]
+                        
+                        const newComments = commentCopy.filter((singleComment)=>{
+                            return singleComment.comment_id !== comment.comment_id
+                        })
+
+                        return newComments
+                        })
+                    }}>
+                    Delete
+                    </Button>   
+                    : ""}   
                     </div>
                     </Card>
                 )
