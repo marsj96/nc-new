@@ -46,7 +46,7 @@ const Article = () => {
         })
     }, [article_id])
 
-
+    console.log(user)
 
     return (
     <div>
@@ -74,7 +74,7 @@ const Article = () => {
                         </h4>
                         {loggedIn ?
                         <p className="upvoteButton">
-                            <button onClick={()=>{
+                            <Button size={"small"} style={{color:"white"}} onClick={()=>{
                                 patchArticleVote(article_id, 1)
                                 setPostComment(false)
                                 setVotes((prevVote)=>{
@@ -82,20 +82,20 @@ const Article = () => {
                                     return newVote+1
                                 })
                                 }}> 
-                                    + 
-                            </button> 
+                                    Like 
+                            </Button> 
                         </p> : ""}
 
                         {loggedIn ?
                         <p className="upvoteButton">
-                            <button onClick={()=>{
+                            <Button size={"small"} style={{color:"white"}} onClick={()=>{
                                 patchArticleVote(article_id, -1)
                                 setVotes((prevVote)=>{
                                 const newVote = prevVote
                                 return newVote-1
                                 })}}> 
-                                    <span> - </span>
-                            </button> 
+                                   Dislike
+                            </Button> 
                         </p> : ""} 
                     </div>
                 </li>
@@ -138,23 +138,22 @@ const Article = () => {
                 <p> Please log in to post a comment. </p>}  
 
 
-             {/* If postcomment is true, re-renders to display a text area in which user can post comment */}
+                {/* If postcomment is true, re-renders to display a text area in which user can post comment */}
                 {postComment ? 
                 <form onSubmit={handleSubmit}>
                     <label> 
-                        <TextField fullWidth id="standard-basic" className="commentPost" multiLine={true} rows={2} style= {{border: "white"}}label="Press enter to send comment" variant="outlined" value={userInput} onChange={handleChange} />
-                        {/* <textarea className="commentPost" type="text"  /> */}
+                        <TextField fullWidth id="standard-basic" className="commentPost" style= {{border: "white"}} label="Press enter to send comment" variant="outlined" value={userInput} onChange={handleChange} />
                     </label>
 
                     
                 {/* Post comment button that resets the state to close the comment box and sends a post request. Temporarliy updates state of comments to show comment when posted. */}
                     <Button className="loginButton" type="submit" value="Send" onClick={()=>{
-                        postSingleComment(article_id, {username: user.username, body: commentContent})
+                        postSingleComment(article_id, {username: user, body: commentContent})
                         setPostComment(false)
                         setCancelPost(false)
                         setComment((prevValue)=>{
                             const newComments = [...prevValue]
-                            newComments.unshift({author: user.username, body: commentContent, votes: 0, created_at: "Just now..", comment_id: 500})
+                            newComments.unshift({author: user, body: commentContent, votes: 0, created_at: "Just now..", comment_id: 500})
                             return newComments
                         })
                     }}/>
@@ -163,6 +162,7 @@ const Article = () => {
             </div>
         
         <div>
+            {/* Maps over comments array and creates a dummy comment to render to page */}
             {comments.map((comment)=>{
                 return (
                     <Card key={comment.comment_id} variant="outlined" style={{margin: "10px", background:"whitesmoke" }}>
@@ -170,7 +170,7 @@ const Article = () => {
                     <h3 className="commentAuthor"> {comment.author} </h3>
                     <p className="commentBody"> {comment.body} </p>
                     <p className="votesComment"> {comment.created_at.slice(0,10)}</p>
-                    {loggedIn && user.username === comment.author ? 
+                    {loggedIn && user === comment.author ? 
                     <Button size="small" onClick={()=>{
                         deleteComment(comment.comment_id)
                         setComment((prevComments)=>{

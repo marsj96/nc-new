@@ -23,7 +23,7 @@
   }
 }
 .mainHeader {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .mainHeader, .filterBy {
@@ -192,11 +192,17 @@
 
 .upvoteButton, .articleBottomSingle {
   display:inline-block;
+  color: white;
+  background-color: #61dafb;
+  border-radius: 5px;
   /* additional code */
 }
 
-.upvoteButton button:hover {
-  color: #263461;
+.upvoteButton {
+  margin-top: -20px;
+  margin-bottom: -20px;
+  margin-right: 10px;
+  margin-left: 2px;
 }
 
 .postCommentButton {

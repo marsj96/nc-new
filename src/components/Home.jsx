@@ -91,11 +91,6 @@ const Home = () => {
                                     {article.title}                                         
                                 </h2> 
                             </Link>                           
-                            {/* <Link to={`/topics/${article.topic}`} style={{ textDecoration: 'none', color: 'blue' }} className="articleTitle">
-                                <p>
-                                    {` (${article.topic})`}
-                                </p>  
-                            </Link>  */}
                         </li>
 
                         {/*Body of article card*/}
@@ -107,16 +102,16 @@ const Home = () => {
                         
                         {/*Bottom of article card, includes the author, votes, created_at and the link to comments*/}
                         <li key={article.created_at}>
-                            <p className="articleBottom" key={article.created_at}>
+                            <div className="articleBottom" key={article.created_at}>
                                 {`${article.author} `}
                                 Votes:{`${article.votes} `}
                                 {`${article.created_at.slice(0, 10)} `}
                                 <CardActions>
                                     <Link to={`/articles/${article.article_id}`} style={{ textDecoration: 'none', color: 'blue' }}>
-                                    <Button size="small" style={{marginTop: "0px", marginBottom: "-35px", marginLeft: "-10px", background: "#40c4ff", color: "white"}}>Comments</Button> 
+                                    <Button size="small" style={{marginTop: "15px", marginLeft: "-10px", background: "#40c4ff", color: "white"}}>Comments</Button> 
                                     </Link>
                                 </CardActions>      
-                            </p>
+                            </div>
                         </li>   
                 
                     </ul>

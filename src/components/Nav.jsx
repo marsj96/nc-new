@@ -24,12 +24,12 @@ const Nav = () => {
     
     useEffect(() => {
         if(user === "User" || user.length === 0) {
-            console.log("failed")
+            setLoggedIn(false)
         } else {
             setLoggedIn(true)
         }
         
-      }, [user]);
+      }, [user, setLoggedIn]);
 
     const handleChange = (e) => {
         let {value} = e.target;
@@ -43,9 +43,8 @@ const Nav = () => {
     console.log(users)
 
     return (
-        <Box sx={{ flexGrow: 1 }} >
+        <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static" >
-
             <Toolbar style={{maxHeight: "1px", fontFamily: 'Roboto sans-serif'}}>
                 <IconButton
                 size="large"
@@ -68,7 +67,7 @@ const Nav = () => {
                 <Box sx={{ marginRight:"30px", background: loggedIn ? "none" : "white", borderRadius: "3px", width: loggedIn ? "115px" : "150px", borderStyle: loggedIn ? "none" : "solid"}}>
                 {loggedIn ? 
                 <Typography style={{color: "white"}}>
-                    {user}
+                    {user} {}
                 </Typography>
                 :
                 <NativeSelect onChange={handleChange}>
