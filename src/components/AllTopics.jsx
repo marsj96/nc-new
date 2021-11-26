@@ -2,24 +2,15 @@ import { Card } from "@mui/material"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react/cjs/react.development"
 import { getAllTopics } from "../utils/getAllTopics"
-import { getTopics } from "../utils/getTopic"
 
 const AllTopics = () => {
 
     const [topics, setTopics] = useState([])
-    const [articlePrev, setArticlePreview] = useState([])
 
     useEffect(()=>{
         getAllTopics()
         .then((response)=>{
             setTopics(response)
-        })
-    }, [])
-
-    useEffect(()=>{
-        getTopics()
-        .then((response)=>{
-            setArticlePreview(response)
         })
     }, [])
 
@@ -35,13 +26,6 @@ const AllTopics = () => {
                             </li>
                             <li>
                                 <p className="articleBody" key={topic.description}> {topic.description} </p>
-                            </li>
-                            <li>
-                                <Card>
-                                    {articlePrev.map((article)=>{
-                                        return article.title === topic.slug
-                                    })}
-                                </Card>
                             </li>
                         </ul>
                     </Link>
