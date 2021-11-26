@@ -1,4 +1,6 @@
 
+import { AppBar, Button, IconButton, NativeSelect, Toolbar, Typography } from "@mui/material"
+import { Box } from "@mui/system"
 import { useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useState } from "react/cjs/react.development"
@@ -9,8 +11,6 @@ import { getUsers } from "../utils/getUsers"
 const Nav = () => {
 
     const [users, setUsers] = useState([])
-    const [userInput, setUsersInput] = useState("")
-    const [inputError, setInputError] = useState(false)
 
     const { setLoggedIn, user, setUser, loggedIn } = useContext(UserContext)
 
@@ -22,69 +22,78 @@ const Nav = () => {
         })
     }, [])
     
+    useEffect(() => {
+        if(user === "User" || user.length === 0) {
+            console.log("failed")
+        } else {
+            setLoggedIn(true)
+        }
+        
+      }, [user]);
 
-    const handleChange = (event) => {
-        const currentUser = event.target.value
-        setUsersInput(currentUser)
-        handleSubmit(event, currentUser)
-      }
-
-    const handleSubmit = (event, currentUser) => {
-        event.preventDefault()
-        setUser(currentUser)
-
-        users.forEach(singleUser => {
-            if(singleUser.username === user) {
-                setUser(singleUser)
-                setLoggedIn(true)
-            } else {
-                setInputError(true)
-            }
-        });
+    const handleChange = (e) => {
+        let {value} = e.target;
+        handleSubmit(value)
     }
 
-    // returns navBar with login avatar
-    if(loggedIn) {
-        return (
-            
-            <nav className="bar">
-                <nav className="navBar"> 
-                    <img src={user.avatar_url} alt={user.username} className="avatarIMG"/>
-                    <h4 className="usernameNav"> {user.username} </h4>
-                    <h4 className="navBarButtons">
-                    <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
-                        {`Home `}
-                    </Link> 
-                    <Link to="/topics" style={{ textDecoration: 'none', color: 'white' }}>
-                        {`Topics `}
-                    </Link>
-                    </h4>
-                </nav>
-            </nav>
-        )
+    const handleSubmit = (value) => {
+        setUser(value)
     }
 
-    // returns navBar with no login 
+    console.log(users)
+
     return (
-        <nav className="bar">
-            <nav className="navBar"> 
-                <form className="loginBox" onSubmit={handleSubmit}>
-                    <label> 
-                        <input className={inputError ? 'error' : 'inputBox'} type="text" value={userInput} style={{ width:"90px" }} onChange={handleChange}/>
-                    </label>
-                        <input className="loginButton" type="submit" value="Login"/>
-                </form>
-                <h4 className="navBarButtons">
-                    <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
-                        {`Home `}
-                    </Link>
-                    <Link to="/topics" style={{ textDecoration: 'none', color: 'white' }}>
-                        {`Topics `}
-                    </Link>
-                </h4>
-            </nav>
-        </nav>
-    )
+        <Box sx={{ flexGrow: 1 }} >
+          <AppBar position="static" >
+
+            <Toolbar style={{maxHeight: "1px", fontFamily: 'Roboto sans-serif'}}>
+                <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}>
+
+                </IconButton>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <h5 style={{textAlign: "left", wordSpacing: "25px"}}> 
+                        <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+                            {`Home `}
+                        </Link>   
+                        <Link to="/topics" style={{ textDecoration: 'none', color: 'white' }}>
+                            {`Topics `}
+                        </Link>   
+                    </h5>
+                </Typography>
+                <Box sx={{ marginRight:"30px", background: loggedIn ? "none" : "white", borderRadius: "3px", width: loggedIn ? "115px" : "150px", borderStyle: loggedIn ? "none" : "solid"}}>
+                {loggedIn ? 
+                <Typography style={{color: "white"}}>
+                    {user}
+                </Typography>
+                :
+                <NativeSelect onChange={handleChange}>
+                    <option value="null"> Select user </option>
+                    {users.map((user)=>{
+                        return (
+                            <option key={user.username} value={user.username}> {user.name} </option>
+                        )
+                    })}
+                </NativeSelect>
+                }
+                </Box>
+                {loggedIn ?
+                <Button size={"small"} style={{color: "white", background: "red", marginLeft: "-20px", width: "100px"}} onClick={()=>{
+                    setUser([])
+                    setLoggedIn(false)
+                }}>
+                    Log out
+                </Button>
+                : ""
+                }
+            </Toolbar>
+          </AppBar>
+        </Box>
+      );
 }
 
 export default Nav
