@@ -1,3 +1,4 @@
+import { Card } from "@mui/material"
 import { useParams } from "react-router"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react/cjs/react.development"
@@ -21,6 +22,7 @@ const Topics = () => {
         {topics.map((topic)=>{
             return (
                 <div key={topic.article_id}>
+                    <Card variant="outlined" style={{margin: "10px", background:"whitesmoke" }}>
                     <ul className="articlesCards">
                         <li>
                             <Link to={`/articles/${topic.article_id}`} style={{ textDecoration: 'none', color: 'white' }}>
@@ -40,6 +42,7 @@ const Topics = () => {
 
                     
                     </ul>
+                    </Card>
                 </div>
             )
            
