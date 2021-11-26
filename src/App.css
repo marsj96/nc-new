@@ -4,6 +4,12 @@
   font-family: 'Roboto', sans-serif;
 }
 
+@media only screen and (min-width: 850px) {
+  .main {
+    max-width: 850px;
+    margin: auto;
+  }
+}
 
 
 .App-logo {
