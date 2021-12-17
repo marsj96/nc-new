@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useParams } from "react-router"
-import { useContext, useState } from "react/cjs/react.development"
+import { useContext, useState } from "react"
 import { UserContext } from "../contexts/User"
 import { getSingleArticle } from "../utils/getArticles"
 import { getComments } from "../utils/getComments"

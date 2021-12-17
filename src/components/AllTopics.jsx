@@ -1,6 +1,6 @@
 import { Card } from "@mui/material"
 import { Link } from "react-router-dom"
-import { useEffect, useState } from "react/cjs/react.development"
+import { useEffect, useState } from "react"
 import { getAllTopics } from "../utils/getAllTopics"
 
 const AllTopics = () => {
